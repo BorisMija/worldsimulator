@@ -30,6 +30,7 @@ const HomePage: React.FC = () => {
             >
               Explorează lumea
             </Link>
+            <AuthButtons />
           </nav>
         </div>
       </header>
@@ -55,13 +56,12 @@ const HomePage: React.FC = () => {
               >
                 Începe explorarea lumii
               </Link>
-              <button
-                type="button"
-                onClick={() => alert('Simularea bătăliei va fi aici – o vom implementa în următorul pas.')}
+              <Link
+                to="/war"
                 className="inline-flex items-center justify-center rounded-lg bg-rose-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-rose-500/40 hover:bg-rose-500 transition-colors"
               >
-                Începe bătălia
-              </button>
+                ⚔️ Începe bătălia
+              </Link>
               <a
                 href="https://restcountries.com/"
                 target="_blank"
@@ -70,6 +70,11 @@ const HomePage: React.FC = () => {
               >
                 API țări folosit
               </a>
+              <div className="w-full mt-4 text-sm text-slate-300">
+                <p className="mb-2">✨ Did you know? The simulator assigns military and economic power using population and area heuristics — small islands can still be influential through strategy.</p>
+                <p className="mb-2">📜 Tip: Try selecting a mid-power country and challenge a stronger neighbor — diplomacy and strategic timing change outcomes.</p>
+                <p className="text-xs text-slate-400">Pro tip: You can register and log in to save custom scenarios (local server required).</p>
+              </div>
             </div>
           </div>
 
@@ -123,4 +128,31 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
+function AuthButtons() {
+  // lazy import to avoid circular issues
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const auth = require('../services/auth').default;
+  const { Link, useNavigate } = require('react-router-dom');
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    auth.logout();
+    navigate('/');
+  };
+
+  if (auth.isAuthenticated()) {
+    return (
+      <button onClick={handleLogout} className="inline-flex items-center rounded-full bg-rose-600 px-3 py-1 text-xs font-medium text-white">
+        Logout
+      </button>
+    );
+  }
+
+  return (
+    <Link to="/login" className="inline-flex items-center rounded-full border border-slate-400/60 px-3 py-1 text-xs font-medium text-slate-100 hover:bg-white/5">
+      Login
+    </Link>
+  );
+}
 

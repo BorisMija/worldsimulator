@@ -1,8 +1,8 @@
 import { Country } from '../models/Country';
-import { RestCountryFactory } from '../factories/RestCountryFactory';
+import { RestApiWorldFactory } from '../factories/RestApiWorldFactory';
 
-const REST_COUNTRIES_URL = 'https://restcountries.com/v3.1/all';
-const factory = new RestCountryFactory();
+const REST_COUNTRIES_URL = 'https://restcountries.com/v3.1/independent?status=true';
+const factory = new RestApiWorldFactory();
 
 export async function fetchAllCountries(): Promise<Country[]> {
   const response = await fetch(REST_COUNTRIES_URL);

@@ -1,0 +1,96 @@
+/* WorldMap Styles */
+.world-map {
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.marker-country {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.marker-country:hover {
+  opacity: 0.9;
+}
+
+.marker-selected {
+  animation: pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    r: 8px;
+    opacity: 0.8;
+  }
+  50% {
+    r: 12px;
+    opacity: 1;
+  }
+  100% {
+    r: 8px;
+    opacity: 0.8;
+  }
+}
+
+.country-popup {
+  min-width: 250px;
+  font-family: 'Arial', sans-serif;
+}
+
+.country-popup h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+  border-bottom: 2px solid #0066ff;
+  padding-bottom: 5px;
+}
+
+.country-stats {
+  background: #f5f5f5;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.country-stats p {
+  margin: 3px 0;
+}
+
+.country-power {
+  background: #fff3cd;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.country-power p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.btn-map-select {
+  width: 100%;
+  padding: 10px;
+  background: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-map-select:hover {
+  background: #0052cc;
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background-color: #e8f4f8;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}

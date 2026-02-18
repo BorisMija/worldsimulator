@@ -7,5 +7,5 @@ export interface Country {
   flagUrl: string;
   economicPower: number; // 0–100
   militaryPower: number; // 0–100
+  latlng: [number, number]; // [latitude, longitude]
 }
-
