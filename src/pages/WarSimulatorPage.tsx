@@ -4,6 +4,7 @@ import { useCountriesController } from '../controllers/useCountriesController';
 import { WorldMap } from '../components/WorldMap';
 import { WarService } from '../services/warService';
 import { Country } from '../models/Country';
+import { CountryBuilder } from '../builders/builder';
 import '../styles/WarSimulator.css';
 
 const WarSimulatorPage: React.FC = () => {
@@ -12,6 +13,7 @@ const WarSimulatorPage: React.FC = () => {
   const [neighbors, setNeighbors] = useState<Country[]>([]);
   const [attackResult, setAttackResult] = useState<any>(null);
   const warService = new WarService();
+  const [countryList, setCountryList] = useState<Country[]>(countries);
 
   const handleCountryClick = (country: Country) => {
     setSelectedCountry(country);
